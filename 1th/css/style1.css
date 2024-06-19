@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header-logo h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.header-links {
+    display: flex;
+}
+
+.header-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 16px;
+    position: relative;
+    /* تحديد العنصر بوضعية نسبية لتطبيق الحركة */
+}
+
+.header-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    /* تحديد المسافة من الأسفل */
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: blue;
+    transition: width 0.4s ease-in-out;
+    /* تحديد سرعة الانتقال ونمط التسريع التدريجي */
+
+}
+
+.header-links a:hover::after {
+    width: 100%;
+    /* جعل الخط يمتد بالكامل */
+    height: 3px;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+}
+
+.header-user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header-user p {
+    margin: 0;
+    font-size: 16px;
+}
+
+#nam:hover {
+    color: blue;
+}
+
+#inde {
+    color: blue;
+}
+
+#namevedios {
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+#discription {
+    /* padding: 20px; */
+    text-decoration: none;
+}
+
+#vedio_charh {
+
+    height: 300px;
+    display: inline;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#vedio_charh {
+    width: 60%;
+    /* تعديل حجم الفيديو حسب الحاجة */
+}
+
+#namevedios p,
+#discription p {
+    margin: 0;
+}
+
+/* تحسين الشكل العام للفيديو والنص */
+a {
+    position: relative;
+    overflow: hidden;
+}
+
+/* إضافة تأثير عند تمرير المؤشر فوق الفيديو */
+a:hover #vedio_charh {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* إضافة تأثيرات إضافية للعناصر النصية */
+#namevedios p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    /* تعديل حجم النص حسب الحاجة */
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* تعديل لون خلفية النص حسب الحاجة */
+    color: #fff;
+    /* تعديل لون النص حسب الحاجة */
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* إظهار العناصر النصية بتأثيرات انتقالية */
+a:hover #namevedios p {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* تحسين مظهر النص في حالة العرض باللغة العربية */
+body[dir="rtl"] #namevedios p {
+    right: 0;
+    left: initial;
+    transform: translateX(100%);
+}

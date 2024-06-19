@@ -1,0 +1,38 @@
+// معلومات اتصال قاعدة البيانات
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "khaledeldeyasty";
+
+    // إنشاء اتصال بقاعدة البيانات
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // التحقق من نجاح الاتصال
+    if ($conn->connect_error) {
+        die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
+    }
+
+    // البيانات التي ستتم إدخالها
+    
+
+    // استعلام SQL لإدخال البيانات في جدول
+    $sql = "INSERT INTO videos (id, name, tybe, yer, vedeos) VALUES (UUID(), '$name', '$description', '$age', '$newFileName')";
+
+    // تنفيذ الاستعلام والتحقق من نجاحه
+    if ($conn->query($sql) === TRUE) {
+        echo "تمت إضافة العنصر بنجاح";
+        header("location: user.php");
+    } else {
+        echo "حدث خطأ أثناء إضافة العنصر: " . $conn->error;
+    }
+
+
+
+
+
+
+
+    $video = $_FILES['video']['name'];
+$name = $_POST['name'];
+$description = $_POST['description'];
+$age = $_POST['age'];
