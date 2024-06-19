@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome Page</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9400, #ff5f6d, #ff007f);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            padding-top: 200px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 50px;
+            animation: neon 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff007f, 0 0 40px #ff007f, 0 0 50px #ff007f, 0 0 60px #ff007f;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff007f, 0 0 40px #ff007f, 0 0 50px #ff007f, 0 0 60px #ff007f;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to our Website!</h1>
+    <h2 id="name"></h2>
+
+    <script>
+        // تحديث اسم المستخدم
+        var nameElement = document.getElementById("name");
+        var name = "khaled eldeyasty"; // يمكنك تغيير الاسم هنا
+        var index = 0;
+        var interval = setInterval(function () {
+            nameElement.innerHTML = name.substring(0, index);
+            index++;
+            if (index > name.length) {
+                clearInterval(interval);
+            }
+        }, 200);
+        // تحديد الوقت المستهدف بعد فترة التوجيه (بالميلي ثانية)
+        var redirectTime = 5000;
+
+        // تحديد صفحة الوجهة
+        var redirectPage = "login.php";
+
+        // تأخير التوجيه إلى صفحة الوجهة بعد فترة زمنية محددة
+        setTimeout(function () {
+            window.location.href = redirectPage;
+        }, redirectTime);
+    </script>
+    <br>
+    <center>
+        <footer>
+            <em>
+                <p style="display: inline-block;">&copy; All rights reserved 2023</p>
+            </em>
+            <span style="display: inline-block;">
+                <a href="http://profile-muhammad-sarhan.eb2a.com/" style="text-decoration: none;">Mohammed Sarhan </a> - <em>Website Developer</em>
+            </span>
+        </footer>
+    </center>
+</body>
+
+</html>

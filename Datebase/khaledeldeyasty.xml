@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.2.1
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Sep 11, 2023 at 10:29 PM
+- Server version: 10.4.28-MariaDB
+- PHP Version: 8.0.28
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="khaledeldeyasty" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="admin">
+                CREATE TABLE `admin` (
+                  `email` varchar(50) NOT NULL,
+                  `password` varchar(500) NOT NULL,
+                  `gender` varchar(50) NOT NULL,
+                  `college` varchar(255) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="answer">
+                CREATE TABLE `answer` (
+                  `qid` text NOT NULL,
+                  `ansid` text NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="chat">
+                CREATE TABLE `chat` (
+                  `id` char(36) NOT NULL DEFAULT uuid(),
+                  `name` varchar(255) NOT NULL,
+                  `msg` varchar(255) NOT NULL,
+                  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="comments">
+                CREATE TABLE `comments` (
+                  `id` int(11) NOT NULL,
+                  `name` varchar(255) NOT NULL,
+                  `comment` varchar(255) NOT NULL,
+                  `vedios_id` int(11) NOT NULL,
+                  `user_id` int(11) NOT NULL,
+                  `time` time NOT NULL,
+                  `img_user` varchar(255) NOT NULL,
+                  `name_user` varchar(255) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="feedback">
+                CREATE TABLE `feedback` (
+                  `id` text NOT NULL,
+                  `name` varchar(50) NOT NULL,
+                  `email` varchar(50) NOT NULL,
+                  `subject` varchar(500) NOT NULL,
+                  `feedback` varchar(500) NOT NULL,
+                  `date` date NOT NULL,
+                  `time` varchar(50) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="history">
+                CREATE TABLE `history` (
+                  `email` varchar(50) NOT NULL,
+                  `eid` text NOT NULL,
+                  `score` int(11) NOT NULL,
+                  `level` int(11) NOT NULL,
+                  `sahi` int(11) NOT NULL,
+                  `wrong` int(11) NOT NULL,
+                  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="options">
+                CREATE TABLE `options` (
+                  `qid` varchar(50) NOT NULL,
+                  `option` varchar(5000) NOT NULL,
+                  `optionid` text NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="questions">
+                CREATE TABLE `questions` (
+                  `eid` text NOT NULL,
+                  `qid` text NOT NULL,
+                  `qns` text NOT NULL,
+                  `choice` int(10) NOT NULL,
+                  `sn` int(11) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="quiz">
+                CREATE TABLE `quiz` (
+                  `eid` text NOT NULL,
+                  `title` varchar(100) NOT NULL,
+                  `sahi` int(11) NOT NULL,
+                  `wrong` int(11) NOT NULL,
+                  `total` int(11) NOT NULL,
+                  `time` bigint(20) NOT NULL,
+                  `intro` text NOT NULL,
+                  `tag` varchar(100) NOT NULL,
+                  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="rank">
+                CREATE TABLE `rank` (
+                  `email` varchar(50) NOT NULL,
+                  `score` int(11) NOT NULL,
+                  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="user">
+                CREATE TABLE `user` (
+                  `name` varchar(50) NOT NULL,
+                  `gender` varchar(5) NOT NULL,
+                  `college` varchar(100) NOT NULL,
+                  `email` varchar(50) NOT NULL,
+                  `mob` bigint(20) NOT NULL,
+                  `password` varchar(50) NOT NULL,
+                  PRIMARY KEY (`email`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` char(36) NOT NULL DEFAULT uuid(),
+                  `UserName` varchar(255) NOT NULL,
+                  `State` varchar(255) NOT NULL,
+                  `Yers` int(11) NOT NULL,
+                  `photo` varchar(255) NOT NULL,
+                  `type` varchar(255) NOT NULL,
+                  `id_in_chat` int(11) NOT NULL,
+                  `Money` int(11) NOT NULL,
+                  `id_error` int(11) NOT NULL,
+                  `::id` int(11) NOT NULL,
+                  `number` varchar(255) NOT NULL,
+                  `email` varchar(255) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="videos">
+                CREATE TABLE `videos` (
+                  `id` char(36) NOT NULL DEFAULT uuid(),
+                  `name` varchar(255) NOT NULL,
+                  `tybe` varchar(2555) NOT NULL,
+                  `yer` int(11) NOT NULL,
+                  `vedeos` varchar(255) NOT NULL,
+                  `test_id` int(11) NOT NULL,
+                  `mr` int(11) NOT NULL,
+                  `home_work_id` int(11) NOT NULL,
+                  `pdf` varchar(255) NOT NULL,
+                  `img_ad` varchar(255) NOT NULL,
+                  `Name_ad` varchar(255) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'khaledeldeyasty'
+    -->
+    <database name="khaledeldeyasty">
+        <!-- Table admin -->
+        <table name="admin">
+            <column name="email">sunnygkp10@gmail.com</column>
+            <column name="password">123456</column>
+            <column name="gender"></column>
+            <column name="college"></column>
+        </table>
+        <table name="admin">
+            <column name="email">d@d.com</column>
+            <column name="password">asd</column>
+            <column name="gender">a</column>
+            <column name="college">asd</column>
+        </table>
+        <table name="admin">
+            <column name="email">Joker@gmail.com</column>
+            <column name="password">Dark123</column>
+            <column name="gender"></column>
+            <column name="college"></column>
+        </table>
+        <!-- Table answer -->
+        <table name="answer">
+            <column name="qid">55892169bf6a7</column>
+            <column name="ansid">55892169d2efc</column>
+        </table>
+        <table name="answer">
+            <column name="qid">5589216a3646e</column>
+            <column name="ansid">5589216a48722</column>
+        </table>
+        <table name="answer">
+            <column name="qid">558922117fcef</column>
+            <column name="ansid">5589221195248</column>
+        </table>
+        <table name="answer">
+            <column name="qid">55892211e44d5</column>
+            <column name="ansid">55892211f1fa7</column>
+        </table>
+        <table name="answer">
+            <column name="qid">558922894c453</column>
+            <column name="ansid">558922895ea0a</column>
+        </table>
+        <table name="answer">
+            <column name="qid">558922899ccaa</column>
+            <column name="ansid">55892289aa7cf</column>
+        </table>
+        <table name="answer">
+            <column name="qid">558923538f48d</column>
+            <column name="ansid">558923539a46c</column>
+        </table>
+        <table name="answer">
+            <column name="qid">55892353f05c4</column>
+            <column name="ansid">55892354051be</column>
+        </table>
+        <table name="answer">
+            <column name="qid">607336aa8c987</column>
+            <column name="ansid">607336aa961b5</column>
+        </table>
+        <table name="answer">
+            <column name="qid">607336aacedd1</column>
+            <column name="ansid">607336aadc68e</column>
+        </table>
+        <table name="answer">
+            <column name="qid">607336ab244aa</column>
+            <column name="ansid">607336ab31664</column>
+        </table>
+        <table name="answer">
+            <column name="qid">64ff77c77ca16</column>
+            <column name="ansid">64ff77c77de4c</column>
+        </table>
+        <table name="answer">
+            <column name="qid">64ff77c7848e2</column>
+            <column name="ansid">64ff77c785f7b</column>
+        </table>
+        <table name="answer">
+            <column name="qid">64ff77c78dbdf</column>
+            <column name="ansid">64ff77c78f17b</column>
+        </table>
+        <table name="answer">
+            <column name="qid">64ff77d5b6180</column>
+            <column name="ansid">64ff77d5b7922</column>
+        </table>
+        <table name="answer">
+            <column name="qid">64ff77d5bece9</column>
+            <column name="ansid">64ff77d5bffd1</column>
+        </table>
+        <table name="answer">
+            <column name="qid">64ff77d5c8076</column>
+            <column name="ansid">64ff77d5c9306</column>
+        </table>
+        <!-- Table chat -->
+        <table name="chat">
+            <column name="id">0537e735-50df-11ee-affa-ac50de047618</column>
+            <column name="name">khaled eldeyasty</column>
+            <column name="msg">uhb</column>
+            <column name="date">2023-09-11 23:08:49</column>
+        </table>
+        <table name="chat">
+            <column name="id">3644054d-50df-11ee-affa-ac50de047618</column>
+            <column name="name">khaled eldeyasty</column>
+            <column name="msg">@93dd5497-50da-11ee-aafd-ac50de047618 الشرح وحش</column>
+            <column name="date">2023-09-11 23:10:11</column>
+        </table>
+        <table name="chat">
+            <column name="id">e28d91ea-50de-11ee-affa-ac50de047618</column>
+            <column name="name">Mohamed Sarhan</column>
+            <column name="msg">hello</column>
+            <column name="date">2023-09-11 23:07:50</column>
+        </table>
+        <!-- Table comments -->
+        <!-- Table feedback -->
+        <table name="feedback">
+            <column name="id">60730932a3d1b</column>
+            <column name="name">Demo Test</column>
+            <column name="email">test@feedback.com</column>
+            <column name="subject">Testing Feedbacks</column>
+            <column name="feedback">This is a demo text for testing purpose</column>
+            <column name="date">2021-04-11</column>
+            <column name="time">04:35:30pm</column>
+        </table>
+        <table name="feedback">
+            <column name="id">607309ab640d8</column>
+            <column name="name">Chris</column>
+            <column name="email">chris@gmail.com</column>
+            <column name="subject">Regard System</column>
+            <column name="feedback">this is a demo text!</column>
+            <column name="date">2021-04-11</column>
+            <column name="time">04:37:31pm</column>
+        </table>
+        <table name="feedback">
+            <column name="id">60730a627e21f</column>
+            <column name="name">Oliver</column>
+            <column name="email">oliver@gmail.com</column>
+            <column name="subject">Bug</column>
+            <column name="feedback">demo demo</column>
+            <column name="date">2021-04-11</column>
+            <column name="time">04:40:34pm</column>
+        </table>
+        <!-- Table history -->
+        <table name="history">
+            <column name="email">sunnygkp10@gmail.com</column>
+            <column name="eid">558921841f1ec</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2015-06-23 12:31:26</column>
+        </table>
+        <table name="history">
+            <column name="email">sunnygkp10@gmail.com</column>
+            <column name="eid">558920ff906b8</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2015-06-23 16:32:09</column>
+        </table>
+        <table name="history">
+            <column name="email">avantika420@gmail.com</column>
+            <column name="eid">558921841f1ec</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2015-06-23 17:33:04</column>
+        </table>
+        <table name="history">
+            <column name="email">avantika420@gmail.com</column>
+            <column name="eid">5589222f16b93</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2015-06-23 17:49:39</column>
+        </table>
+        <table name="history">
+            <column name="email">mi5@hollywood.com</column>
+            <column name="eid">5589222f16b93</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2015-06-23 18:12:56</column>
+        </table>
+        <table name="history">
+            <column name="email">nik1@gmail.com</column>
+            <column name="eid">558921841f1ec</column>
+            <column name="score">1</column>
+            <column name="level">2</column>
+            <column name="sahi">1</column>
+            <column name="wrong">1</column>
+            <column name="date">2015-06-23 19:11:50</column>
+        </table>
+        <table name="history">
+            <column name="email">clancy@gmail.com</column>
+            <column name="eid">5589222f16b93</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 15:24:37</column>
+        </table>
+        <table name="history">
+            <column name="email">sunnygkp10@gmail.com</column>
+            <column name="eid">5589222f16b93</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 18:27:21</column>
+        </table>
+        <table name="history">
+            <column name="email">doe@gmail.com</column>
+            <column name="eid">558921841f1ec</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 19:20:17</column>
+        </table>
+        <table name="history">
+            <column name="email">james@gmail.com</column>
+            <column name="eid">558921841f1ec</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 19:26:12</column>
+        </table>
+        <table name="history">
+            <column name="email">james@gmail.com</column>
+            <column name="eid">5589222f16b93</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 19:26:54</column>
+        </table>
+        <table name="history">
+            <column name="email">steeve@gmail.com</column>
+            <column name="eid">558921841f1ec</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 19:44:46</column>
+        </table>
+        <table name="history">
+            <column name="email">steeve@gmail.com</column>
+            <column name="eid">5589222f16b93</column>
+            <column name="score">4</column>
+            <column name="level">2</column>
+            <column name="sahi">2</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 19:45:20</column>
+        </table>
+        <table name="history">
+            <column name="email">steeve@gmail.com</column>
+            <column name="eid">6073360884420</column>
+            <column name="score">6</column>
+            <column name="level">3</column>
+            <column name="sahi">3</column>
+            <column name="wrong">0</column>
+            <column name="date">2021-04-11 19:50:15</column>
+        </table>
+        <table name="history">
+            <column name="email">sarhanmuhammad584@gmail.com</column>
+            <column name="eid">6073360884420</column>
+            <column name="score">-2</column>
+            <column name="level">3</column>
+            <column name="sahi">1</column>
+            <column name="wrong">2</column>
+            <column name="date">2023-09-11 00:32:33</column>
+        </table>
+        <table name="history">
+            <column name="email">steeve@gmail.com</column>
+            <column name="eid">558922ec03021</column>
+            <column name="score">-2</column>
+            <column name="level">2</column>
+            <column name="sahi">0</column>
+            <column name="wrong">2</column>
+            <column name="date">2023-09-11 23:17:27</column>
+        </table>
+        <!-- Table options -->
+        <table name="options">
+            <column name="qid">55892169bf6a7</column>
+            <column name="option">usermod</column>
+            <column name="optionid">55892169d2efc</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892169bf6a7</column>
+            <column name="option">useradd</column>
+            <column name="optionid">55892169d2f05</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892169bf6a7</column>
+            <column name="option">useralter</column>
+            <column name="optionid">55892169d2f09</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892169bf6a7</column>
+            <column name="option">groupmod</column>
+            <column name="optionid">55892169d2f0c</column>
+        </table>
+        <table name="options">
+            <column name="qid">5589216a3646e</column>
+            <column name="option">751</column>
+            <column name="optionid">5589216a48713</column>
+        </table>
+        <table name="options">
+            <column name="qid">5589216a3646e</column>
+            <column name="option">752</column>
+            <column name="optionid">5589216a4871a</column>
+        </table>
+        <table name="options">
+            <column name="qid">5589216a3646e</column>
+            <column name="option">754</column>
+            <column name="optionid">5589216a4871f</column>
+        </table>
+        <table name="options">
+            <column name="qid">5589216a3646e</column>
+            <column name="option">755</column>
+            <column name="optionid">5589216a48722</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922117fcef</column>
+            <column name="option">echo</column>
+            <column name="optionid">5589221195248</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922117fcef</column>
+            <column name="option">print</column>
+            <column name="optionid">558922119525a</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922117fcef</column>
+            <column name="option">printf</column>
+            <column name="optionid">5589221195265</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922117fcef</column>
+            <column name="option">cout</column>
+            <column name="optionid">5589221195270</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892211e44d5</column>
+            <column name="option">int a</column>
+            <column name="optionid">55892211f1f97</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892211e44d5</column>
+            <column name="option">$a</column>
+            <column name="optionid">55892211f1fa7</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892211e44d5</column>
+            <column name="option">long int a</column>
+            <column name="optionid">55892211f1fb4</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892211e44d5</column>
+            <column name="option">int a$</column>
+            <column name="optionid">55892211f1fbd</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922894c453</column>
+            <column name="option">cin&gt;&gt;a;</column>
+            <column name="optionid">558922895ea0a</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922894c453</column>
+            <column name="option">cin&lt;&lt;a;</column>
+            <column name="optionid">558922895ea26</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922894c453</column>
+            <column name="option">cout&gt;&gt;a;</column>
+            <column name="optionid">558922895ea34</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922894c453</column>
+            <column name="option">cout&lt;a;</column>
+            <column name="optionid">558922895ea41</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922899ccaa</column>
+            <column name="option">cout</column>
+            <column name="optionid">55892289aa7cf</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922899ccaa</column>
+            <column name="option">cin</column>
+            <column name="optionid">55892289aa7df</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922899ccaa</column>
+            <column name="option">print</column>
+            <column name="optionid">55892289aa7eb</column>
+        </table>
+        <table name="options">
+            <column name="qid">558922899ccaa</column>
+            <column name="option">printf</column>
+            <column name="optionid">55892289aa7f5</column>
+        </table>
+        <table name="options">
+            <column name="qid">558923538f48d</column>
+            <column name="option">255.0.0.0</column>
+            <column name="optionid">558923539a46c</column>
+        </table>
+        <table name="options">
+            <column name="qid">558923538f48d</column>
+            <column name="option">255.255.255.0</column>
+            <column name="optionid">558923539a480</column>
+        </table>
+        <table name="options">
+            <column name="qid">558923538f48d</column>
+            <column name="option">255.255.0.0</column>
+            <column name="optionid">558923539a48b</column>
+        </table>
+        <table name="options">
+            <column name="qid">558923538f48d</column>
+            <column name="option">none of these</column>
+            <column name="optionid">558923539a495</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892353f05c4</column>
+            <column name="option">192.168.1.100</column>
+            <column name="optionid">5589235405192</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892353f05c4</column>
+            <column name="option">172.168.16.2</column>
+            <column name="optionid">55892354051a3</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892353f05c4</column>
+            <column name="option">10.0.0.0.1</column>
+            <column name="optionid">55892354051b4</column>
+        </table>
+        <table name="options">
+            <column name="qid">55892353f05c4</column>
+            <column name="option">11.11.11.11</column>
+            <column name="optionid">55892354051be</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aa8c987</column>
+            <column name="option">module.expose</column>
+            <column name="optionid">607336aa961a7</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aa8c987</column>
+            <column name="option">module</column>
+            <column name="optionid">607336aa961b1</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aa8c987</column>
+            <column name="option">module.exports</column>
+            <column name="optionid">607336aa961b5</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aa8c987</column>
+            <column name="option">all</column>
+            <column name="optionid">607336aa961b9</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aacedd1</column>
+            <column name="option">nodejs codeastro.js</column>
+            <column name="optionid">607336aadc686</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aacedd1</column>
+            <column name="option">node codeastro.js</column>
+            <column name="optionid">607336aadc68e</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aacedd1</column>
+            <column name="option">codeastro.js</column>
+            <column name="optionid">607336aadc691</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336aacedd1</column>
+            <column name="option">none</column>
+            <column name="optionid">607336aadc694</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336ab244aa</column>
+            <column name="option">npm --version</column>
+            <column name="optionid">607336ab31664</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336ab244aa</column>
+            <column name="option">npm --ver</column>
+            <column name="optionid">607336ab31670</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336ab244aa</column>
+            <column name="option">npm help</column>
+            <column name="optionid">607336ab31672</column>
+        </table>
+        <table name="options">
+            <column name="qid">607336ab244aa</column>
+            <column name="option">none</column>
+            <column name="optionid">607336ab31673</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c77ca16</column>
+            <column name="option">f,vfv</column>
+            <column name="optionid">64ff77c77de42</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c77ca16</column>
+            <column name="option">vrdfv</column>
+            <column name="optionid">64ff77c77de4c</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c77ca16</column>
+            <column name="option">vfv</column>
+            <column name="optionid">64ff77c77de4d</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c77ca16</column>
+            <column name="option">vfv f</column>
+            <column name="optionid">64ff77c77de4e</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c7848e2</column>
+            <column name="option">vds d</column>
+            <column name="optionid">64ff77c785f75</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c7848e2</column>
+            <column name="option">svdfv</column>
+            <column name="optionid">64ff77c785f7b</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c7848e2</column>
+            <column name="option">svd </column>
+            <column name="optionid">64ff77c785f7f</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c7848e2</column>
+            <column name="option">sv cs</column>
+            <column name="optionid">64ff77c785f80</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c78dbdf</column>
+            <column name="option">vdsdvc</column>
+            <column name="optionid">64ff77c78f174</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c78dbdf</column>
+            <column name="option">sdvfsd</column>
+            <column name="optionid">64ff77c78f17b</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c78dbdf</column>
+            <column name="option">vdsds</column>
+            <column name="optionid">64ff77c78f17c</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77c78dbdf</column>
+            <column name="option">sdvds</column>
+            <column name="optionid">64ff77c78f17d</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5b6180</column>
+            <column name="option">f,vfv</column>
+            <column name="optionid">64ff77d5b791b</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5b6180</column>
+            <column name="option">vrdfv</column>
+            <column name="optionid">64ff77d5b7922</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5b6180</column>
+            <column name="option">vfv</column>
+            <column name="optionid">64ff77d5b7923</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5b6180</column>
+            <column name="option">vfv f</column>
+            <column name="optionid">64ff77d5b7924</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5bece9</column>
+            <column name="option">vds d</column>
+            <column name="optionid">64ff77d5bffc8</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5bece9</column>
+            <column name="option">svdfv</column>
+            <column name="optionid">64ff77d5bffd1</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5bece9</column>
+            <column name="option">svd </column>
+            <column name="optionid">64ff77d5bffd2</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5bece9</column>
+            <column name="option">sv cs</column>
+            <column name="optionid">64ff77d5bffd4</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5c8076</column>
+            <column name="option">vdsdvc</column>
+            <column name="optionid">64ff77d5c92fc</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5c8076</column>
+            <column name="option">sdvfsd</column>
+            <column name="optionid">64ff77d5c9306</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5c8076</column>
+            <column name="option">vdsds</column>
+            <column name="optionid">64ff77d5c9307</column>
+        </table>
+        <table name="options">
+            <column name="qid">64ff77d5c8076</column>
+            <column name="option">sdvds</column>
+            <column name="optionid">64ff77d5c9308</column>
+        </table>
+        <!-- Table questions -->
+        <table name="questions">
+            <column name="eid">558920ff906b8</column>
+            <column name="qid">55892169bf6a7</column>
+            <column name="qns">what is command for changing user information??</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">558920ff906b8</column>
+            <column name="qid">5589216a3646e</column>
+            <column name="qns">what is permission for view only for other??</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">558921841f1ec</column>
+            <column name="qid">558922117fcef</column>
+            <column name="qns">what is command for print in php??</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">558921841f1ec</column>
+            <column name="qid">55892211e44d5</column>
+            <column name="qns">which is a variable of php??</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">5589222f16b93</column>
+            <column name="qid">558922894c453</column>
+            <column name="qns">what is correct statement in c++??</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">5589222f16b93</column>
+            <column name="qid">558922899ccaa</column>
+            <column name="qns">which command is use for print the output in c++?</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">558922ec03021</column>
+            <column name="qid">558923538f48d</column>
+            <column name="qns">what is correct mask for A class IP???</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">558922ec03021</column>
+            <column name="qid">55892353f05c4</column>
+            <column name="qns">which is not a private IP??</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">6073360884420</column>
+            <column name="qid">607336aa8c987</column>
+            <column name="qns">The node.js modules can be exposed using</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">6073360884420</column>
+            <column name="qid">607336aacedd1</column>
+            <column name="qns">Which statement executes the code of codeastro.js file?</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">6073360884420</column>
+            <column name="qid">607336ab244aa</column>
+            <column name="qns">How can we check the current version of NPM?</column>
+            <column name="choice">4</column>
+            <column name="sn">3</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77c77ca16</column>
+            <column name="qns">ju9edfr</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77c7848e2</column>
+            <column name="qns">vdsvf</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77c78dbdf</column>
+            <column name="qns">dfsvsdf</column>
+            <column name="choice">4</column>
+            <column name="sn">3</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77c794457</column>
+            <column name="qns">dvsz</column>
+            <column name="choice">4</column>
+            <column name="sn">4</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77d5b6180</column>
+            <column name="qns">ju9edfr</column>
+            <column name="choice">4</column>
+            <column name="sn">1</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77d5bece9</column>
+            <column name="qns">vdsvf</column>
+            <column name="choice">4</column>
+            <column name="sn">2</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77d5c8076</column>
+            <column name="qns">dfsvsdf</column>
+            <column name="choice">4</column>
+            <column name="sn">3</column>
+        </table>
+        <table name="questions">
+            <column name="eid">64ff7767004c5</column>
+            <column name="qid">64ff77d5cf46c</column>
+            <column name="qns">dvsz</column>
+            <column name="choice">4</column>
+            <column name="sn">4</column>
+        </table>
+        <!-- Table quiz -->
+        <table name="quiz">
+            <column name="eid">558920ff906b8</column>
+            <column name="title">Linux : File Managment</column>
+            <column name="sahi">2</column>
+            <column name="wrong">1</column>
+            <column name="total">2</column>
+            <column name="time">5</column>
+            <column name="intro"></column>
+            <column name="tag">linux</column>
+            <column name="date">2015-06-23 12:03:59</column>
+        </table>
+        <table name="quiz">
+            <column name="eid">558921841f1ec</column>
+            <column name="title">Php Coding</column>
+            <column name="sahi">2</column>
+            <column name="wrong">1</column>
+            <column name="total">2</column>
+            <column name="time">5</column>
+            <column name="intro"></column>
+            <column name="tag">PHP</column>
+            <column name="date">2015-06-23 12:06:12</column>
+        </table>
+        <table name="quiz">
+            <column name="eid">5589222f16b93</column>
+            <column name="title">C++ Coding</column>
+            <column name="sahi">2</column>
+            <column name="wrong">1</column>
+            <column name="total">2</column>
+            <column name="time">5</column>
+            <column name="intro"></column>
+            <column name="tag">c++</column>
+            <column name="date">2015-06-23 12:09:03</column>
+        </table>
+        <table name="quiz">
+            <column name="eid">558922ec03021</column>
+            <column name="title">Networking</column>
+            <column name="sahi">2</column>
+            <column name="wrong">1</column>
+            <column name="total">2</column>
+            <column name="time">5</column>
+            <column name="intro"></column>
+            <column name="tag">networking</column>
+            <column name="date">2015-06-23 12:12:12</column>
+        </table>
+        <table name="quiz">
+            <column name="eid">6073360884420</column>
+            <column name="title">Nodejs Term</column>
+            <column name="sahi">2</column>
+            <column name="wrong">2</column>
+            <column name="total">3</column>
+            <column name="time">2</column>
+            <column name="intro">Basic test for nodejs terms</column>
+            <column name="tag">nodejs</column>
+            <column name="date">2021-04-11 19:46:48</column>
+        </table>
+        <table name="quiz">
+            <column name="eid">64ff7767004c5</column>
+            <column name="title">Mohamed Sarhan</column>
+            <column name="sahi">3</column>
+            <column name="wrong">1</column>
+            <column name="total">8</column>
+            <column name="time">3</column>
+            <column name="intro">test</column>
+            <column name="tag">#test</column>
+            <column name="date">2023-09-11 23:24:07</column>
+        </table>
+        <!-- Table rank -->
+        <table name="rank">
+            <column name="email">sunnygkp10@gmail.com</column>
+            <column name="score">5</column>
+            <column name="time">2021-04-11 18:27:17</column>
+        </table>
+        <table name="rank">
+            <column name="email">avantika420@gmail.com</column>
+            <column name="score">8</column>
+            <column name="time">2015-06-23 17:49:39</column>
+        </table>
+        <table name="rank">
+            <column name="email">mi5@hollywood.com</column>
+            <column name="score">4</column>
+            <column name="time">2015-06-23 18:12:56</column>
+        </table>
+        <table name="rank">
+            <column name="email">nik1@gmail.com</column>
+            <column name="score">1</column>
+            <column name="time">2015-06-23 19:11:50</column>
+        </table>
+        <table name="rank">
+            <column name="email">doe@gmail.com</column>
+            <column name="score">4</column>
+            <column name="time">2021-04-11 19:20:17</column>
+        </table>
+        <table name="rank">
+            <column name="email">clancy@gmail.com</column>
+            <column name="score">4</column>
+            <column name="time">2021-04-11 15:24:37</column>
+        </table>
+        <table name="rank">
+            <column name="email">james@gmail.com</column>
+            <column name="score">14</column>
+            <column name="time">2021-04-11 19:32:53</column>
+        </table>
+        <table name="rank">
+            <column name="email">steeve@gmail.com</column>
+            <column name="score">12</column>
+            <column name="time">2023-09-11 23:17:27</column>
+        </table>
+        <table name="rank">
+            <column name="email">sarhanmuhammad584@gmail.com</column>
+            <column name="score">-2</column>
+            <column name="time">2023-09-11 00:32:33</column>
+        </table>
+        <!-- Table user -->
+        <table name="user">
+            <column name="name">Asley</column>
+            <column name="gender">F</column>
+            <column name="college">Wh Coast College</column>
+            <column name="email">ashley@gmail.com</column>
+            <column name="mob">3014797869</column>
+            <column name="password">e10adc3949ba59abbe56e057f20f883e</column>
+        </table>
+        <table name="user">
+            <column name="name">Tom Clancy</column>
+            <column name="gender">M</column>
+            <column name="college">Wh Coast College</column>
+            <column name="email">clancy@gmail.com</column>
+            <column name="mob">1485554569</column>
+            <column name="password">5f4dcc3b5aa765d61d8327deb882cf99</column>
+        </table>
+        <table name="user">
+            <column name="name">John Doe</column>
+            <column name="gender">M</column>
+            <column name="college">Demo College</column>
+            <column name="email">doe@gmail.com</column>
+            <column name="mob">1245788880</column>
+            <column name="password">5f4dcc3b5aa765d61d8327deb882cf99</column>
+        </table>
+        <table name="user">
+            <column name="name">Freda Mack
+</column>
+            <column name="gender">F</column>
+            <column name="college">Wh Coast College</column>
+            <column name="email">freda@gmail.com</column>
+            <column name="mob">2150488880</column>
+            <column name="password">e10adc3949ba59abbe56e057f20f883e</column>
+        </table>
+        <table name="user">
+            <column name="name">James Rhoades</column>
+            <column name="gender">M</column>
+            <column name="college">Westham College</column>
+            <column name="email">james@gmail.com</column>
+            <column name="mob">245778540</column>
+            <column name="password">5f4dcc3b5aa765d61d8327deb882cf99</column>
+        </table>
+        <table name="user">
+            <column name="name">Johnny</column>
+            <column name="gender">M</column>
+            <column name="college">Greenville College</column>
+            <column name="email">johnnys@gmail.com</column>
+            <column name="mob">3780145870</column>
+            <column name="password">e10adc3949ba59abbe56e057f20f883e</column>
+        </table>
+        <table name="user">
+            <column name="name">Liam</column>
+            <column name="gender">M</column>
+            <column name="college">Liberty College</column>
+            <column name="email">liam@gmail.com</column>
+            <column name="mob">1753150015</column>
+            <column name="password">e10adc3949ba59abbe56e057f20f883e</column>
+        </table>
+        <table name="user">
+            <column name="name">Mohamed Sarhan</column>
+            <column name="gender">M</column>
+            <column name="college">Hamed</column>
+            <column name="email">sarhanmuhammad584@gmail.com</column>
+            <column name="mob">6</column>
+            <column name="password">0fbe0ab41093e341e087fe1317569018</column>
+        </table>
+        <table name="user">
+            <column name="name">Steeve Moore</column>
+            <column name="gender">M</column>
+            <column name="college">Westview College</column>
+            <column name="email">steeve@gmail.com</column>
+            <column name="mob">2146975696</column>
+            <column name="password">5f4dcc3b5aa765d61d8327deb882cf99</column>
+        </table>
+        <table name="user">
+            <column name="name">William</column>
+            <column name="gender">M</column>
+            <column name="college">Riverview College</column>
+            <column name="email">will@gmail.com</column>
+            <column name="mob">3478540365</column>
+            <column name="password">e10adc3949ba59abbe56e057f20f883e</column>
+        </table>
+        <!-- Table users -->
+        <table name="users">
+            <column name="id">837c9434-50d8-11ee-aafd-ac50de047618</column>
+            <column name="UserName">Mohamed Sarhan</column>
+            <column name="State">Active</column>
+            <column name="Yers">16</column>
+            <column name="photo"></column>
+            <column name="type"></column>
+            <column name="id_in_chat">0</column>
+            <column name="Money">0</column>
+            <column name="id_error">0</column>
+            <column name="::id">0</column>
+            <column name="number"></column>
+            <column name="email">sarhanmuhammad584@gmail.com</column>
+        </table>
+        <table name="users">
+            <column name="id">f6877057-50de-11ee-affa-ac50de047618</column>
+            <column name="UserName">khaled eldeyasty</column>
+            <column name="State">Active</column>
+            <column name="Yers">16</column>
+            <column name="photo"></column>
+            <column name="type"></column>
+            <column name="id_in_chat">0</column>
+            <column name="Money">0</column>
+            <column name="id_error">0</column>
+            <column name="::id">0</column>
+            <column name="number"></column>
+            <column name="email">khaledeldeyasty@gmail.com</column>
+        </table>
+        <!-- Table videos -->
+        <table name="videos">
+            <column name="id">93dd5497-50da-11ee-aafd-ac50de047618</column>
+            <column name="name">Mohamed Sarhan</column>
+            <column name="tybe">مقدمة ل الكيمياء</column>
+            <column name="yer">16</column>
+            <column name="vedeos">64ff6c61d4cbc.mp4</column>
+            <column name="test_id">0</column>
+            <column name="mr">0</column>
+            <column name="home_work_id">0</column>
+            <column name="pdf"></column>
+            <column name="img_ad"></column>
+            <column name="Name_ad"></column>
+        </table>
+        <table name="videos">
+            <column name="id">b8c46d90-50df-11ee-affa-ac50de047618</column>
+            <column name="name">Lesson1</column>
+            <column name="tybe">الجدول الدوري يكش نخلص 🤣🤣 </column>
+            <column name="yer">16</column>
+            <column name="vedeos">64ff74fe4550f.mp4</column>
+            <column name="test_id">0</column>
+            <column name="mr">0</column>
+            <column name="home_work_id">0</column>
+            <column name="pdf"></column>
+            <column name="img_ad"></column>
+            <column name="Name_ad"></column>
+        </table>
+    </database>
+</pma_xml_export>
